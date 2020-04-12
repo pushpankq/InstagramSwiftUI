@@ -12,6 +12,11 @@ import SDWebImageSwiftUI
 struct Home: View {
     
     @ObservedObject var observed = Observer()
+    @State var show = false
+    @State var user = ""
+    @State var url = ""
+    
+    
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
@@ -19,7 +24,7 @@ struct Home: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(observed.status) { status  in
-                            StatusCard(imageName: status.image).padding(.leading, 8)
+                            StatusCard(imageName: status.image, user: status.name, show: self.$show, user1: self.$user, url: self.$url).padding(.leading, 8)
                         }
                     }
                 }
@@ -28,6 +33,8 @@ struct Home: View {
                     PostCard()
                 }
             }
-        }.animation(.spring())
+        }.sheet(isPresented: $show) {
+            StatusView(url: self.url , name: self.user)
+        }
     }
 }

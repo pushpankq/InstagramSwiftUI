@@ -2,8 +2,8 @@
 //  Main.swift
 //  InstagramSwiftUI
 //
-//  Created by Puspank Kumar on 12/04/20.
-//  Copyright © 2020 Puspank Kumar. All rights reserved.
+//  Created by Pushpank Kumar on 12/04/20.
+//  Copyright © 2020 Pushpank Kumar. All rights reserved.
 //
 
 import SwiftUI
@@ -25,33 +25,22 @@ class Observer : ObservableObject {
                 
                 if i.type == .added {
                     let id  = i.document.documentID
-                    
-                    print("********************************")
-                    print("********************************")
-                    print("********************************")
-                    print("********************************")
-                    print("********************************")
-                    print("document", i.document.get("name"))
-                    print("********************************")
-                       print("********************************")
-                       print("********************************")
-                       print("********************************")
-                       print("********************************")
-                    print("document", i.document.get("image"))
-
-
-                    
-
-                    
                     let name = i.document.get("name") as? String
                     let image = i.document.get("image") as? String
-                    
-                    
-                    
                     self.status.append(datatype(id: id, name: name ?? "", image: image ?? ""))
-                         
+                    
                 }
                 
+                if i.type == .removed{
+                    
+                    let id = i.document.documentID
+                    for j in 0..<self.status.count{
+                        if self.status[j].id == id{
+                            self.status.remove(at: j)
+                            return
+                        }
+                    }
+                }
             }
         }
         
