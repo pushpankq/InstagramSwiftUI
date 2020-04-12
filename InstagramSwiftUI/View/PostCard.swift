@@ -7,17 +7,22 @@
 //
 
 import SwiftUI
+import Firebase
+import SDWebImageSwiftUI
 
 struct PostCard: View {
-
+    
     var user = ""
     var image = ""
     var id  = ""
+    var likes = ""
+    var comments = ""
     var body: some View {
         VStack(alignment: .leading, content: {
             HStack {
-                Image("testing").resizable().frame(width: 30, height: 30).clipShape(Circle())
-                Text("Hi how are you")
+                AnimatedImage(url: URL(string: image))
+                    .resizable().frame(width: 30, height: 30).clipShape(Circle())
+                Text(user)
                 Spacer()
                 Button(action: {
                     
@@ -25,19 +30,30 @@ struct PostCard: View {
                     Image("menu").resizable().frame(width: 15, height: 15)
                 }.foregroundColor(Color("darkAndWhite"))
             }
-
-            Image("testing").resizable().frame(height: 350)
+            
+            AnimatedImage(url: URL(string: image)).resizable().frame(height: 350)
             HStack {
                 Button(action: {
                     
                 }) {
-                   Image("comment").resizable().frame(width: 26, height: 26)
+                    Image("comment").resizable().frame(width: 26, height: 26)
                 }.foregroundColor(Color("darkAndWhite"))
                 
                 Button(action: {
                     
+                    // update likes
+                    let database = Firestore.firestore()
+                    let like = Int.init(self.likes)!
+                    database.collection("posts").document(self.id).updateData(["likes" : "\(like+1)"]) { (error) in
+                        if error != nil{
+                            
+                            print((error))
+                            return
+                        }
+                    }
+                    
                 }) {
-                   Image("heart").resizable().frame(width: 26, height: 26)
+                    Image("heart").resizable().frame(width: 26, height: 26)
                 }.foregroundColor(Color("darkAndWhite"))
                 
                 Spacer()
@@ -45,14 +61,14 @@ struct PostCard: View {
                 Button(action: {
                     
                 }) {
-                   Image("saved").resizable().frame(width: 30, height: 30)
+                    Image("saved").resizable().frame(width: 30, height: 30)
                 }.foregroundColor(Color("darkAndWhite"))
-
+                
             }.padding(.top, 8)
             
-            Text("2 Likes").padding(.top, 8)
-            Text("View all 3 comments ")
-
+            Text("\(likes) Likes").padding(.top, 8)
+            Text("View all \(comments) comments ")
+            
         }).padding(8)
     }
 }

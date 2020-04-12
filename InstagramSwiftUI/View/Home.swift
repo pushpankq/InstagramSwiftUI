@@ -12,6 +12,8 @@ import SDWebImageSwiftUI
 struct Home: View {
     
     @ObservedObject var statusViewModel = StatusViewModel()
+    @ObservedObject var postViewModel = PostViewModel()
+    
     @State var show = false
     @State var user = ""
     @State var url = ""
@@ -25,11 +27,17 @@ struct Home: View {
                         ForEach(statusViewModel.status) { status  in
                             StatusCard(imageName: status.image, user: status.name, show: self.$show, user1: self.$user, url: self.$url).padding(.leading, 8)
                         }
-                    }
+                    }.animation(.spring())
                 }
                 
-                ForEach(0..<8) { _ in
-                    PostCard()
+                if postViewModel.posts.isEmpty{
+                    Text("No Posts").fontWeight(.heavy)
+                }
+                else{
+
+                    ForEach(postViewModel.posts){ post in
+                        PostCard(user: post.name, image: post.image, id: post.id, likes: post.likes, comments:  post.comments)
+                    }
                 }
             }
         }.sheet(isPresented: $show) {

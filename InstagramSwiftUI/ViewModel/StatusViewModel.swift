@@ -31,6 +31,8 @@ class StatusViewModel : ObservableObject {
                     
                 }
                 
+                print("status ", self.status.count)
+                
                 if i.type == .removed{
                     
                     let id = i.document.documentID
