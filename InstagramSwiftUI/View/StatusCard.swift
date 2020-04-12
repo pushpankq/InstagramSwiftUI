@@ -7,14 +7,17 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct StatusCard: View {
     var imageName = ""
+    
+
     var body: some View {
-        Image(imageName)
+        
+        AnimatedImage(url: URL(string: imageName))
             .resizable()
             .frame(width: 60, height: 60)
             .clipShape(Circle())
     }
 }
-

@@ -7,16 +7,19 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct Home: View {
+    
+    @ObservedObject var observed = Observer()
     var body: some View {
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(0..<5) { _ in
-                            StatusCard(imageName: "testing").padding(.leading, 8)
+                        ForEach(observed.status) { status  in
+                            StatusCard(imageName: status.image).padding(.leading, 8)
                         }
                     }
                 }
@@ -25,6 +28,6 @@ struct Home: View {
                     PostCard()
                 }
             }
-        }
+        }.animation(.spring())
     }
 }
