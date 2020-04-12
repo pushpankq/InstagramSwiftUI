@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,9 @@
 		975CD900244321B100BB6FEE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975CD8FF244321B100BB6FEE /* Home.swift */; };
 		975CD902244321F100BB6FEE /* StatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975CD901244321F100BB6FEE /* StatusCard.swift */; };
 		975CD9042443221600BB6FEE /* PostCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975CD9032443221600BB6FEE /* PostCard.swift */; };
+		975CD907244324EF00BB6FEE /* Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975CD906244324EF00BB6FEE /* Observers.swift */; };
+		975CD9092443251900BB6FEE /* DataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 975CD9082443251900BB6FEE /* DataType.swift */; };
+		975CD90C244333B500BB6FEE /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 975CD90B244333B500BB6FEE /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,8 @@
 		975CD8FF244321B100BB6FEE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		975CD901244321F100BB6FEE /* StatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCard.swift; sourceTree = "<group>"; };
 		975CD9032443221600BB6FEE /* PostCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCard.swift; sourceTree = "<group>"; };
+		975CD906244324EF00BB6FEE /* Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observers.swift; sourceTree = "<group>"; };
+		975CD9082443251900BB6FEE /* DataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataType.swift; sourceTree = "<group>"; };
 		EE0648959F00ECEA7AAD0FD2 /* Pods-InstagramSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-InstagramSwiftUI/Pods-InstagramSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				975CD90C244333B500BB6FEE /* SDWebImageSwiftUI in Frameworks */,
 				39D8AC6BF47002A5345F2B19 /* Pods_InstagramSwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +79,7 @@
 			children = (
 				975CD8BF2442E9B100BB6FEE /* AppDelegate.swift */,
 				975CD8FD2443216E00BB6FEE /* SceneDelegate.swift */,
+				975CD905244324BE00BB6FEE /* Model */,
 				975CD8FC2443212400BB6FEE /* View */,
 				975CD8C72442E9B400BB6FEE /* Preview Content */,
 				975CD8C52442E9B400BB6FEE /* Assets.xcassets */,
@@ -100,6 +107,15 @@
 				975CD9032443221600BB6FEE /* PostCard.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		975CD905244324BE00BB6FEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				975CD906244324EF00BB6FEE /* Observers.swift */,
+				975CD9082443251900BB6FEE /* DataType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B8046A662DB097A16B85CB09 /* Frameworks */ = {
@@ -137,6 +153,9 @@
 			dependencies = (
 			);
 			name = InstagramSwiftUI;
+			packageProductDependencies = (
+				975CD90B244333B500BB6FEE /* SDWebImageSwiftUI */,
+			);
 			productName = InstagramSwiftUI;
 			productReference = 975CD8BC2442E9B100BB6FEE /* InstagramSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +184,9 @@
 				Base,
 			);
 			mainGroup = 975CD8B32442E9B100BB6FEE;
+			packageReferences = (
+				975CD90A244333B500BB6FEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 975CD8BD2442E9B100BB6FEE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,6 +262,8 @@
 				975CD8C02442E9B100BB6FEE /* AppDelegate.swift in Sources */,
 				975CD8C42442E9B100BB6FEE /* InstagramView.swift in Sources */,
 				975CD900244321B100BB6FEE /* Home.swift in Sources */,
+				975CD9092443251900BB6FEE /* DataType.swift in Sources */,
+				975CD907244324EF00BB6FEE /* Observers.swift in Sources */,
 				975CD8FE2443216E00BB6FEE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		975CD90A244333B500BB6FEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		975CD90B244333B500BB6FEE /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 975CD90A244333B500BB6FEE /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 975CD8B42442E9B100BB6FEE /* Project object */;
 }
