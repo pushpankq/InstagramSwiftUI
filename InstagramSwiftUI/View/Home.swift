@@ -11,11 +11,10 @@ import SDWebImageSwiftUI
 
 struct Home: View {
     
-    @ObservedObject var observed = Observer()
+    @ObservedObject var statusViewModel = StatusViewModel()
     @State var show = false
     @State var user = ""
     @State var url = ""
-    
     
     var body: some View {
         
@@ -23,7 +22,7 @@ struct Home: View {
             VStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(observed.status) { status  in
+                        ForEach(statusViewModel.status) { status  in
                             StatusCard(imageName: status.image, user: status.name, show: self.$show, user1: self.$user, url: self.$url).padding(.leading, 8)
                         }
                     }

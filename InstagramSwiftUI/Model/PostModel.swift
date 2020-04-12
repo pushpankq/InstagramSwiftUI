@@ -6,12 +6,13 @@
 //  Copyright © 2020 Pushpank Kumar. All rights reserved.
 //
 
-import Foundation
 import SwiftUI
 
-struct datatype : Identifiable {
+struct PostModel : Identifiable {
     
-    var id : String
-    var name : String
-    var image : String
+    var id: String
+    var name: String
+    var image: String
+    var comments: String
+    var likes: String
 }

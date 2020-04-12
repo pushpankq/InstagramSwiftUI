@@ -29,7 +29,6 @@ struct StatusView: View {
                 }
                 Spacer()
             }
-            
         }
     }
 }

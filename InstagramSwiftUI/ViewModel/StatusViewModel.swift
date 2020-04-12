@@ -1,5 +1,5 @@
 //
-//  Main.swift
+//  StatusViewModel.swift
 //  InstagramSwiftUI
 //
 //  Created by Pushpank Kumar on 12/04/20.
@@ -9,8 +9,8 @@
 import SwiftUI
 import Firebase
 
-class Observer : ObservableObject {
-    @Published var status = [datatype]()
+class StatusViewModel : ObservableObject {
+    @Published var status = [StatusModel]()
     
     init() {
         let database = Firestore.firestore()
@@ -27,7 +27,7 @@ class Observer : ObservableObject {
                     let id  = i.document.documentID
                     let name = i.document.get("name") as? String
                     let image = i.document.get("image") as? String
-                    self.status.append(datatype(id: id, name: name ?? "", image: image ?? ""))
+                    self.status.append(StatusModel(id: id, name: name ?? "", image: image ?? ""))
                     
                 }
                 
@@ -43,6 +43,5 @@ class Observer : ObservableObject {
                 }
             }
         }
-        
     }
 }
